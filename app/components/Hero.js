@@ -65,7 +65,7 @@ export default function Hero() {
   if (!timeLeft) return null;
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center px-6 md:px-12 overflow-hidden mt-10">
+    <section className="relative w-full h-screen flex items-center justify-center px-6 md:px-12 overflow-hidden mt-10 min-h-[1200px]">
       <MusicPlayer />
       <Balloons />
 
