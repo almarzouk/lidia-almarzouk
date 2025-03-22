@@ -11,7 +11,7 @@ export default function Hero() {
 
   // ✅ قائمة صور السلايدر
   const images = [
-    "/hero0.jpg",
+    "/hero0.jpeg",
     "/hero1.jpg",
     "/hero2.jpg",
     "/hero3.jpg",
