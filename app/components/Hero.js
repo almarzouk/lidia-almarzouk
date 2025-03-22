@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Balloons from "./Ballons";
 import MusicPlayer from "./MusicPlayer";
-import { useMemo } from "react";
+
 export default function Hero() {
   // 🕒 تحديد تاريخ عيد الميلاد
   const birthdayDate = useMemo(() => new Date("2025-03-30T00:00:00"), []);
@@ -28,6 +28,7 @@ export default function Hero() {
   ];
   const [currentImage, setCurrentImage] = useState(0);
 
+  // ✅ حساب الوقت المتبقي
   function calculateTimeLeft() {
     const now = new Date();
     const difference = birthdayDate - now;
@@ -41,21 +42,8 @@ export default function Hero() {
     };
   }
 
-  // ✅ تغيير الصورة كل 2 ثانية
+  // ✅ تحديث الوقت المتبقي كل ثانية
   useEffect(() => {
-    function calculateTimeLeft() {
-      const now = new Date();
-      const difference = birthdayDate - now;
-      if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {
@@ -65,12 +53,23 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, [birthdayDate]);
 
+  // ✅ تغيير الصورة كل 2 ثانية
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 2000);
+
+    return () => clearInterval(imageInterval);
+  }, [images.length]);
+
   if (!timeLeft) return null;
+
   return (
     <section className="relative w-full h-screen flex items-center justify-center px-6 md:px-12 overflow-hidden mt-10">
       <MusicPlayer />
       <Balloons />
-      {/* ✅ Floating Balloons */}
+
+      {/* ✅ بالونات متحركة */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.img
           src="/ballons.png"
@@ -88,14 +87,14 @@ export default function Hero() {
         />
       </div>
 
-      {/* ✅ Container (Grid for Image & Content) */}
+      {/* ✅ الحاوية الرئيسية */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 max-w-6xl w-full bg-white bg-opacity-70 rounded-3xl shadow-lg overflow-hidden"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        {/* ✅ Left Side: Image Slider (Now visible on all screens) */}
+        {/* ✅ الصورة المتغيرة */}
         <div className="w-full relative min-h-[350px] md:min-h-[450px] overflow-hidden">
           <motion.img
             key={currentImage}
@@ -108,7 +107,7 @@ export default function Hero() {
           />
         </div>
 
-        {/* ✅ Right Side: Content */}
+        {/* ✅ المحتوى */}
         <div className="flex flex-col justify-center p-6 md:p-12 text-gray-800">
           <motion.h1
             className="text-4xl md:text-5xl font-extrabold text-purple-700 mb-4 text-center"
@@ -118,13 +117,14 @@ export default function Hero() {
           >
             🎉 عيد ميلاد ليديا 🎂
           </motion.h1>
+
           <p className="text-lg md:text-xl font-medium leading-relaxed mb-6 text-center">
             انضموا إلينا للاحتفال بعيد ميلاد ليديا يوم{" "}
             <strong className="text-pink-400">30 مارس</strong>! 🎈🥳 استعدوا
             للحفلة الأروع مع العائلة والأصدقاء.
           </p>
 
-          {/* ✅ القصة القصيرة */}
+          {/* ✅ القصة */}
           <motion.div
             className="bg-purple-50 p-4 md:p-6 rounded-xl shadow-md mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -135,12 +135,7 @@ export default function Hero() {
               🌸 قصة ليديا 🌸
             </h2>
             <p className="text-right md:text-lg text-gray-700 leading-relaxed">
-              عام مضى على ولادتها، منذ أن غدا صباحنا وجهها، وليلنا سهر بها،
-              وعمرنا سمر وفرح بها. منحت الحياة فرحا وصخبا ودفئا كيوم ولادتك،
-              ربيعا، مشمسا، دافئا، رحمة وسكونا ك ساعة الغروب من ثالث أيام رمضان
-              <br />
-              <br />
-              💚 وشكرا لكل من ساندنا
+عام مضى منذ أن غدا صباحنا وجهها، وليلنا سمر بها، وسهر على أمنها.. عام جميل كعينيها، دافئ كضحكتها، مليء بالرزق والسكينة والحب والخير.. الحمد لله اأولا والشكر لكل من ساندنا في هذا العام
             </p>
           </motion.div>
 
