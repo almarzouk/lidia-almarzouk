@@ -120,7 +120,7 @@ export default function Hero() {
 
           <p className="text-lg md:text-xl font-medium leading-relaxed mb-6 text-center">
             انضموا إلينا للاحتفال بعيد ميلاد ليديا يوم{" "}
-            <strong className="text-pink-400">30 مارس</strong>! 🎈🥳 استعدوا
+            <strong className="text-pink-400">20 نيسان</strong>! 🎈🥳 استعدوا
             للحفلة الرائعة مع العائلة والأصدقاء.
           </p>
 
