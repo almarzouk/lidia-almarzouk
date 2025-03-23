@@ -6,7 +6,7 @@ import MusicPlayer from "./MusicPlayer";
 
 export default function Hero() {
   // 🕒 تحديد تاريخ عيد الميلاد
-  const birthdayDate = useMemo(() => new Date("2025-03-30T00:00:00"), []);
+  const birthdayDate = useMemo(() => new Date("2025-04-20T00:00:00"), []);
   const [timeLeft, setTimeLeft] = useState(null);
 
   // ✅ قائمة صور السلايدر
@@ -121,7 +121,7 @@ export default function Hero() {
           <p className="text-lg md:text-xl font-medium leading-relaxed mb-6 text-center">
             انضموا إلينا للاحتفال بعيد ميلاد ليديا يوم{" "}
             <strong className="text-pink-400">30 مارس</strong>! 🎈🥳 استعدوا
-            للحفلة الأروع مع العائلة والأصدقاء.
+            للحفلة الرائعة مع العائلة والأصدقاء.
           </p>
 
           {/* ✅ القصة */}
