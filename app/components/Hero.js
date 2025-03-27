@@ -6,7 +6,7 @@ import MusicPlayer from "./MusicPlayer";
 
 export default function Hero() {
   // 🕒 تحديد تاريخ عيد الميلاد
-  const birthdayDate = useMemo(() => new Date("2025-04-20T00:00:00"), []);
+  const birthdayDate = useMemo(() => new Date("2025-04-12T15:00:00"), []);
   const [timeLeft, setTimeLeft] = useState(null);
 
   // ✅ قائمة صور السلايدر
