@@ -16,7 +16,7 @@ export default function BirthdayInfo() {
         {/* 📅 تاريخ الحفل */}
         <p className="text-lg md:text-2xl text-gray-700 mb-6 font-medium leading-relaxed">
           <strong className="text-pink-700 text-2xl md:text-3xl">
-            20 April 2025
+            12 April 2025
           </strong>{" "}
           سنحتفل بعيد ميلاد ! 🎂🎁
         </p>
