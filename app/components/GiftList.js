@@ -295,7 +295,7 @@ export default function GiftList() {
                   {gift.reserved ? (
                     <div className="mt-2">
                       <span className="block text-red-400 font-bold text-xl mb-2 bg-gray-700 bg-opacity-50 py-2 px-4 rounded-lg">
-                        🎉 تم الحجز بواسطة {gift.reservedBy}
+                        🎉 تم الحجز 
                       </span>
                       {session && session.user.name === gift.reservedBy && (
                         <button
