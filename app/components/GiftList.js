@@ -161,8 +161,8 @@ export default function GiftList() {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             اختر هديتك المفضلة واحجزها قبل أن يسبقك أحد إليها!
           </p>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            تتسطيع حجز هديتين كحد أقصى
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto text-red-500">
+            الرابط فقط للأستئناس يمكنك شراء الهدية من مكانك المفضل
           </p>
         </div>
 
